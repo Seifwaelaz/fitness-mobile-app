@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, useColorScheme, View } from 'react-native'
+import { Alert, Pressable, StyleSheet, Text, useColorScheme, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import ThemedCard from '../../../components/ThemedCard'
 import ThemedButton from '../../../components/ThemedButton'
@@ -48,7 +48,20 @@ const WorkoutDetails = () => {
     }, [deleteFlag])
 
     const handlePress = async () => {
-        await deleteWorkout(id)
+        Alert.alert(
+            'Remove workout',
+            'Are you sure you want to remove your workout?',
+            [
+                {
+                    text: 'Cancel',
+                    style: 'cancel'
+                },
+                {
+                    text: 'Remove',
+                    style: 'destructive',
+                    onPress: async () => {await deleteWorkout(id)}
+                }
+            ])
     }
 
     if(!workout){
