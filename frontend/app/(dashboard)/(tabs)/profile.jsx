@@ -1,4 +1,12 @@
-import { ActivityIndicator, Alert, Image, Pressable, StyleSheet, Text, useColorScheme} from 'react-native'
+import {
+  ActivityIndicator,
+  Alert,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  useColorScheme,
+} from 'react-native'
 
 import * as ImagePicker from 'expo-image-picker'
 
@@ -14,17 +22,14 @@ import { File } from 'expo-file-system'
 import { Colors } from '../../../constants/Colors'
 
 const profile = () => {
-
-  const {logout, isLoading} = useLogout()
-  const {user, dispatch} = useUserContext()
+  const { logout, isLoading } = useLogout()
+  const { user, dispatch } = useUserContext()
   const [isLoading2, setIsLoading2] = useState(false)
   const [isLoading3, setIsLoading3] = useState(false)
   const colorScheme = useColorScheme()
   const theme = Colors[colorScheme] ?? Colors.light
 
-
   const [error, setError] = useState(null)
-
 
   const handleLogoutButton = async () => {
     await logout()
@@ -40,13 +45,16 @@ const profile = () => {
 
     formData.append('profilePicture', file)
 
-    const response = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/user/profile-picture`, {
-    method: 'PATCH',
-    headers: {
-        Authorization: `Bearer ${user.token}`
-    },
-    body: formData
-    })
+    const response = await fetch(
+      `${process.env.EXPO_PUBLIC_API_URL}/user/profile-picture`,
+      {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: formData,
+      },
+    )
 
     const json = await response.json()
 
@@ -56,12 +64,11 @@ const profile = () => {
       return
     }
 
-    if(response.ok)
-    {
-      dispatch({type: 'UPDATE_PROFILE', payload: json})
+    if (response.ok) {
+      dispatch({ type: 'UPDATE_PROFILE', payload: json })
       const updatedUser = {
         ...user,
-        ...json
+        ...json,
       }
 
       await AsyncStorage.setItem('user', JSON.stringify(updatedUser))
@@ -84,115 +91,107 @@ const profile = () => {
   }
 
   const handleRemoveImage = async () => {
-
-  Alert.alert(
-    'Remove profile picture',
-    'Are you sure you want to remove your profile picture?',
-    [
+    Alert.alert(
+      'Remove profile picture',
+      'Are you sure you want to remove your profile picture?',
+      [
         {
-            text: 'Cancel',
-            style: 'cancel'
+          text: 'Cancel',
+          style: 'cancel',
         },
         {
-            text: 'Remove',
-            style: 'destructive',
-            onPress: async () => {
+          text: 'Remove',
+          style: 'destructive',
+          onPress: async () => {
+            setError(null)
+            setIsLoading3(true)
 
-
-        setError(null)
-        setIsLoading3(true)
-
-        const response = await fetch(
-            `${process.env.EXPO_PUBLIC_API_URL}/user/profile-picture`,
-            {
+            const response = await fetch(
+              `${process.env.EXPO_PUBLIC_API_URL}/user/profile-picture`,
+              {
                 method: 'DELETE',
                 headers: {
-                    Authorization: `Bearer ${user.token}`
-                }
+                  Authorization: `Bearer ${user.token}`,
+                },
+              },
+            )
+
+            const json = await response.json()
+
+            if (!response.ok) {
+              setError(json.error)
+              setIsLoading3(false)
+              return
             }
-        )
 
-        const json = await response.json()
-
-        if (!response.ok) {
-            setError(json.error)
-            setIsLoading3(false)
-            return
-        }
-
-        if(response.ok)
-        {
-          await AsyncStorage.setItem(
-              'user',
-              JSON.stringify({
+            if (response.ok) {
+              await AsyncStorage.setItem(
+                'user',
+                JSON.stringify({
                   ...user,
-                  ...json
+                  ...json,
+                }),
+              )
+
+              dispatch({
+                type: 'UPDATE_PROFILE',
+                payload: json,
               })
-          )
-
-          dispatch({
-              type: 'UPDATE_PROFILE',
-              payload: json
-          })
-          setIsLoading3(false)
-        }
-
-                    }
-                }
-      ]
-  )
-}
+              setIsLoading3(false)
+            }
+          },
+        },
+      ],
+    )
+  }
 
   return (
     <ThemedView style={styles.container}>
       <Pressable onPress={handlePickImage}>
-        {isLoading2? ( <ActivityIndicator size={'large'}/> ) : user.profilePicture? (
+        {isLoading2 ? (
+          <ActivityIndicator size={'large'} />
+        ) : user.profilePicture ? (
           <Image
-            source={{uri: user.profilePicture}}
+            source={{ uri: user.profilePicture }}
             style={styles.profileImage}
           />
-        ): (
-              <ThemedView style={styles.profilePlaceholder}>
-
-                <ThemedText style={styles.cameraIcon}>📷</ThemedText>
-
-              </ThemedView>
+        ) : (
+          <ThemedView style={styles.profilePlaceholder}>
+            <ThemedText style={styles.cameraIcon}>📷</ThemedText>
+          </ThemedView>
         )}
       </Pressable>
 
-      <ThemedText title style={[styles.header, {fontSize: 35}]}>
-        {user? user.name : "name"}
+      <ThemedText title style={[styles.header, { fontSize: 35 }]}>
+        {user ? user.name : 'name'}
       </ThemedText>
-      <Spacer height={2}/>
+      <Spacer height={2} />
       <ThemedText style={styles.header}>
-        {user? user.email : "email"}
+        {user ? user.email : 'email'}
       </ThemedText>
-      <Spacer height={30}/>
+      <Spacer height={30} />
 
-
-
-          {isLoading3?
-            <ThemedButton onPress={handleRemoveImage} style={styles.removeButton}>
-              <Text style={styles.removeButtonText}> Removing Image... </Text>
-            </ThemedButton>
-            :  user.profilePicture? <>
-              <ThemedButton onPress={handlePickImage} style={styles.changeButton}>
-                <Text style={styles.changeButtonText}>Change Profile Picture</Text>
-              </ThemedButton>
-              <ThemedButton onPress={handleRemoveImage} style={styles.removeButton}>
-                <Text style={styles.removeButtonText}>Remove Profile Picture</Text>
-              </ThemedButton>
-              </>
-              :
-              <Text style={{color: theme.background}}>.</Text>
-          }
-
-
-
-
+      {isLoading3 ? (
+        <ThemedButton onPress={handleRemoveImage} style={styles.removeButton}>
+          <Text style={styles.removeButtonText}> Removing Image... </Text>
+        </ThemedButton>
+      ) : user.profilePicture ? (
+        <>
+          <ThemedButton onPress={handlePickImage} style={styles.changeButton}>
+            <Text style={styles.changeButtonText}>Change Profile Picture</Text>
+          </ThemedButton>
+          <ThemedButton onPress={handleRemoveImage} style={styles.removeButton}>
+            <Text style={styles.removeButtonText}>Remove Profile Picture</Text>
+          </ThemedButton>
+        </>
+      ) : (
+        <Text style={{ color: theme.background }}>.</Text>
+      )}
 
       <ThemedButton disabled={isLoading} onPress={handleLogoutButton}>
-        <Text style={{color: "#f2f2f2"}}>{isLoading? "Logging Out.." : "Logout"}</Text>
+        <Text style={{ color: '#f2f2f2' }}>
+          {isLoading ? 'Logging Out..' : 'Logout'}
+        </Text>
       </ThemedButton>
       {error && <Text style={styles.error}> {error}</Text>}
     </ThemedView>
@@ -202,61 +201,61 @@ const profile = () => {
 export default profile
 
 const styles = StyleSheet.create({
-  container : {
+  container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   header: {
     fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "center"
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   profileImage: {
     width: 130,
     height: 130,
-    borderRadius: 65
+    borderRadius: 65,
   },
 
   profilePlaceholder: {
     width: 130,
     height: 130,
     borderRadius: 65,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: '#0000'
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#0000',
   },
 
   cameraIcon: {
-    fontSize: 35
+    fontSize: 35,
   },
   error: {
-      color: Colors.warning,
-      padding: 10,
-      backgroundColor: '#f5c1c8',
-      borderColor: Colors.warning,
-      borderWidth: 1,
-      borderRadius: 6,
-      marginHorizontal: 10,
+    color: Colors.warning,
+    padding: 10,
+    backgroundColor: '#f5c1c8',
+    borderColor: Colors.warning,
+    borderWidth: 1,
+    borderRadius: 6,
+    marginHorizontal: 10,
   },
   removeButton: {
     marginTop: 10,
     marginBottom: 0,
     alignItems: 'center',
-    backgroundColor: '#ae4956'
+    backgroundColor: '#ae4956',
   },
   removeButtonText: {
-      fontSize: 14,
-      color: 'white'
+    fontSize: 14,
+    color: 'white',
   },
   changeButton: {
     marginTop: 10,
     marginBottom: 0,
     alignItems: 'center',
-    backgroundColor: '#5b5859'
+    backgroundColor: '#5b5859',
   },
   changeButtonText: {
-      fontSize: 14,
-      color: 'white'
-  }
+    fontSize: 14,
+    color: 'white',
+  },
 })

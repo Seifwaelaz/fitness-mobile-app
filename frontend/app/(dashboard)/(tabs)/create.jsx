@@ -1,4 +1,10 @@
-import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
+import {
+  Keyboard,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import ThemedView from '../../../components/ThemedView'
 import ThemedText from '../../../components/ThemedText'
@@ -9,16 +15,14 @@ import { useWorkouts } from '../../../hooks/useWorkouts'
 import { Colors } from '../../../constants/Colors'
 
 const create = () => {
+  const [title, setTitle] = useState('')
+  const [load, setLoad] = useState('')
+  const [reps, setReps] = useState('')
+  const [sets, setSets] = useState('')
+  const { isLoading, error, createWorkout, createFlag } = useWorkouts()
 
-  const [title, setTitle] = useState("")
-  const [load, setLoad] = useState("")
-  const [reps, setReps] = useState("")
-  const [sets, setSets] = useState("")
-  const {isLoading, error, createWorkout, createFlag} = useWorkouts()
-
-  useEffect(()=> {
-    if(createFlag)
-    {
+  useEffect(() => {
+    if (createFlag) {
       setTitle('')
       setLoad('')
       setReps('')
@@ -27,8 +31,6 @@ const create = () => {
     }
   }, [createFlag])
 
-
-
   const handleSubmit = async () => {
     await createWorkout(title, load, reps, sets)
   }
@@ -36,7 +38,7 @@ const create = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView style={styles.container}>
-        <Spacer/>
+        <Spacer />
         <ThemedText title={true} style={styles.heading}>
           Add a New Workout
         </ThemedText>
@@ -44,48 +46,49 @@ const create = () => {
         <Spacer />
 
         <ThemedTextInput
-          placeholder='Title'
+          placeholder="Title"
           value={title}
-          onChangeText= {setTitle}
+          onChangeText={setTitle}
           style={styles.input}
         />
 
-        <Spacer/>
+        <Spacer />
 
         <ThemedTextInput
-          placeholder='Load'
+          placeholder="Load"
           value={load}
-          onChangeText= {setLoad}
+          onChangeText={setLoad}
           style={styles.input}
         />
 
-        <Spacer/>
+        <Spacer />
 
         <ThemedTextInput
-          placeholder='Sets'
+          placeholder="Sets"
           value={sets}
-          onChangeText= {setSets}
+          onChangeText={setSets}
           style={styles.input}
         />
 
-        <Spacer/>
+        <Spacer />
 
         <ThemedTextInput
-          placeholder='Reps'
+          placeholder="Reps"
           value={reps}
-          onChangeText= {setReps}
+          onChangeText={setReps}
           style={styles.input}
         />
 
-         <Spacer/>
+        <Spacer />
 
         <ThemedButton onPress={handleSubmit} disabled={isLoading}>
-          <Text style={{color: '#fff'}}>{isLoading? "Saving..." : "Create Workout"}</Text>
+          <Text style={{ color: '#fff' }}>
+            {isLoading ? 'Saving...' : 'Create Workout'}
+          </Text>
         </ThemedButton>
 
-        <Spacer/>
+        <Spacer />
         {error && <Text style={styles.error}> {error}</Text>}
-
       </ThemedView>
     </TouchableWithoutFeedback>
   )
@@ -96,13 +99,13 @@ export default create
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   heading: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 18,
-    textAlign: "center",
+    textAlign: 'center',
   },
   input: {
     padding: 20,
@@ -111,12 +114,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 40,
   },
   error: {
-      color: Colors.warning,
-      padding: 10,
-      // backgroundColor: '#f5c1c8',
-      borderColor: Colors.warning,
-      borderWidth: 1,
-      borderRadius: 6,
-      marginHorizontal: 10,
-    }
+    color: Colors.warning,
+    padding: 10,
+    // backgroundColor: '#f5c1c8',
+    borderColor: Colors.warning,
+    borderWidth: 1,
+    borderRadius: 6,
+    marginHorizontal: 10,
+  },
 })

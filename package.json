@@ -1,0 +1,25 @@
+{
+  "name": "fitness_mobileapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write \"frontend/**/*.{js,jsx,json}\" \"backend/**/*.{js,jsx,json}\"",
+    "format:check": "prettier --check \"frontend/**/*.{js,jsx,json}\" \"backend/**/*.{js,jsx,json}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Seifwaelaz/fitness-mobile-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Seifwaelaz/fitness-mobile-app/issues"
+  },
+  "homepage": "https://github.com/Seifwaelaz/fitness-mobile-app#readme",
+  "devDependencies": {
+    "prettier": "^3.9.10"
+  }
+}

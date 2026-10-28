@@ -1,8 +1,9 @@
-const {createWorkout,
-    getWorkouts,
-    getWorkout,
-    deleteWorkout,
-    updateWorkout
+const {
+  createWorkout,
+  getWorkouts,
+  getWorkout,
+  deleteWorkout,
+  updateWorkout,
 } = require('../controllers/workoutController')
 
 const express = require('express')
