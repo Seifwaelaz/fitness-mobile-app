@@ -2,16 +2,16 @@ import { ActivityIndicator, Alert, Image, Pressable, StyleSheet, Text, useColorS
 
 import * as ImagePicker from 'expo-image-picker'
 
-import ThemedView from '../../components/ThemedView'
-import ThemedText from '../../components/ThemedText'
-import Spacer from '../../components/Spacer'
-import ThemedButton from '../../components/ThemedButton'
-import { useLogout } from '../../hooks/useLogout'
-import { useUserContext } from '../../hooks/useUserContext'
+import ThemedView from '../../../components/ThemedView'
+import ThemedText from '../../../components/ThemedText'
+import Spacer from '../../../components/Spacer'
+import ThemedButton from '../../../components/ThemedButton'
+import { useLogout } from '../../../hooks/useLogout'
+import { useUserContext } from '../../../hooks/useUserContext'
 import { useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { File } from 'expo-file-system'
-import { Colors } from '../../constants/Colors'
+import { Colors } from '../../../constants/Colors'
 
 const profile = () => {
 

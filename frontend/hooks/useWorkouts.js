@@ -171,7 +171,7 @@ export const useWorkouts = () => {
             {
                 dispatch({type: 'DELETE_WORKOUT', payload: json})
                 setDeleteFlag(true)
-                router.replace("/workouts")
+                router.back()
             }
         }
         catch (error) {

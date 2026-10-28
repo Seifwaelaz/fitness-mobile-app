@@ -54,7 +54,7 @@ const EditWorkout = () => {
             dispatch({type: "UPDATE_WORKOUT", payload: updatedWorkout})
             //console.log('Workout updated:', updatedWorkout)
 
-            router.replace(`/workouts/${id}`)
+            router.back()
         }
     }
 
@@ -102,6 +102,10 @@ const EditWorkout = () => {
 
         <Spacer />
 
+        <ThemedText title style={{alignSelf: 'center', marginBottom: 5}}>
+            Title
+        </ThemedText>
+
         <ThemedTextInput
             placeholder="Title"
             value={title}
@@ -109,9 +113,14 @@ const EditWorkout = () => {
                 setTitle(value)
                 setError(null)
             }}
+            style={{textAlign: 'center'}}
         />
 
         <Spacer />
+
+        <ThemedText title style={{alignSelf: 'center', marginBottom: 5}}>
+            Load
+        </ThemedText>
 
         <ThemedTextInput
             placeholder="Load"
@@ -120,20 +129,14 @@ const EditWorkout = () => {
                 setLoad(value)
                 setError(null)
             }}
+            style={{textAlign: 'center'}}
         />
 
         <Spacer />
 
-        <ThemedTextInput
-            placeholder="Reps"
-            value={reps}
-            onChangeText={(value) => {
-                setReps(value)
-                setError(null)
-            }}
-        />
-
-        <Spacer />
+       <ThemedText title style={{alignSelf: 'center', marginBottom: 5}}>
+            Sets
+        </ThemedText>
 
         <ThemedTextInput
             placeholder="Sets"
@@ -142,11 +145,30 @@ const EditWorkout = () => {
                 setSets(value)
                 setError(null)
             }}
+            style={{textAlign: 'center'}}
         />
 
         <Spacer />
 
-        <ThemedButton onPress={handleSubmit} disabled={isLoading}>
+        <ThemedText title style={{alignSelf: 'center', marginBottom: 5}}>
+            Reps
+        </ThemedText>
+
+         <ThemedTextInput
+            placeholder="Reps"
+            value={reps}
+            onChangeText={(value) => {
+                setReps(value)
+                setError(null)
+            }}
+            style={{textAlign: 'center'}}
+        />
+
+        
+
+        <Spacer />
+
+        <ThemedButton onPress={handleSubmit} style={styles.save} disabled={isLoading}>
             <Text style={{color: '#fff', textAlign: 'center'}}>
                 {isLoading ? 'Saving...' : 'Save Changes'}
             </Text>
@@ -175,6 +197,12 @@ const styles = StyleSheet.create({
         fontSize: 30,
         alignSelf: 'center',
     },
+    save: {
+    marginTop: 10,
+    backgroundColor: '#060606',
+    width: 200,
+    alignSelf: "center",
+  },
     error: {
     color: 'red',
     textAlign: 'center',

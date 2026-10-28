@@ -1,12 +1,12 @@
 import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import ThemedView from '../../components/ThemedView'
-import ThemedText from '../../components/ThemedText'
-import Spacer from '../../components/Spacer'
-import ThemedTextInput from '../../components/ThemedTextInput'
-import ThemedButton from '../../components/ThemedButton'
-import { useWorkouts } from '../../hooks/useWorkouts'
-import { Colors } from '../../constants/Colors'
+import ThemedView from '../../../components/ThemedView'
+import ThemedText from '../../../components/ThemedText'
+import Spacer from '../../../components/Spacer'
+import ThemedTextInput from '../../../components/ThemedTextInput'
+import ThemedButton from '../../../components/ThemedButton'
+import { useWorkouts } from '../../../hooks/useWorkouts'
+import { Colors } from '../../../constants/Colors'
 
 const create = () => {
 
@@ -62,21 +62,22 @@ const create = () => {
         <Spacer/>
 
         <ThemedTextInput
-          placeholder='Reps'
-          value={reps}
-          onChangeText= {setReps}
+          placeholder='Sets'
+          value={sets}
+          onChangeText= {setSets}
           style={styles.input}
         />
 
         <Spacer/>
 
         <ThemedTextInput
-          placeholder='Sets'
-          value={sets}
-          onChangeText= {setSets}
+          placeholder='Reps'
+          value={reps}
+          onChangeText= {setReps}
           style={styles.input}
         />
-        <Spacer/>
+
+         <Spacer/>
 
         <ThemedButton onPress={handleSubmit} disabled={isLoading}>
           <Text style={{color: '#fff'}}>{isLoading? "Saving..." : "Create Workout"}</Text>

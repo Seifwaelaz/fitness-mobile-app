@@ -1,15 +1,15 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
-import ThemedView from '../../components/ThemedView'
-import ThemedText from '../../components/ThemedText'
+import ThemedView from '../../../components/ThemedView'
+import ThemedText from '../../../components/ThemedText'
 import { Link, useRouter } from 'expo-router'
-import Spacer from '../../components/Spacer'
-import { useWorkoutsContext } from '../../hooks/useWorkoutsContext'
-import ThemedCard from '../../components/ThemedCard'
-import { Colors } from '../../constants/Colors'
+import Spacer from '../../../components/Spacer'
+import { useWorkoutsContext } from '../../../hooks/useWorkoutsContext'
+import ThemedCard from '../../../components/ThemedCard'
+import { Colors } from '../../../constants/Colors'
 import { useEffect } from 'react'
-import { useWorkouts } from '../../hooks/useWorkouts'
-import { useUserContext } from '../../hooks/useUserContext'
-import ThemedLoader from '../../components/ThemedLoader'
+import { useWorkouts } from '../../../hooks/useWorkouts'
+import { useUserContext } from '../../../hooks/useUserContext'
+import ThemedLoader from '../../../components/ThemedLoader'
 
 
 
@@ -46,7 +46,7 @@ const Workouts = () => {
         keyExtractor={(w) => w._id}
         contentContainerStyle={styles.list}
         renderItem={({item})=> (
-          <Pressable onPress={()=> router.push(`/workouts/${item._id}`)}>
+          <Pressable onPress={() => router.push(`/workouts/${item._id}`)}>
             <ThemedCard style={styles.card}>
               <ThemedText style={styles.title}>{item.title}</ThemedText>
               <ThemedText>Load:   {item.load} KG</ThemedText>

@@ -9,9 +9,9 @@ import ThemedView from '../../../components/ThemedView'
 import ThemedLoader from '../../../components/ThemedLoader'
 import Spacer from '../../../components/Spacer'
 import { Colors } from '../../../constants/Colors'
-import { Ionicons } from '@expo/vector-icons'
-import { Gesture, GestureDetector } from 'react-native-gesture-handler'
-import { scheduleOnRN } from 'react-native-worklets'
+// import { Ionicons } from '@expo/vector-icons'
+// import { Gesture, GestureDetector } from 'react-native-gesture-handler'
+// import { scheduleOnRN } from 'react-native-worklets'
 import { useWorkoutsContext } from '../../../hooks/useWorkoutsContext'
 
 
@@ -78,26 +78,32 @@ const WorkoutDetails = () => {
         )
     }
 
-    const redirectBack = () => {
-        router.replace('/workouts')
-    }
+    // const redirectBack = () => {
+    //     router.replace('/workouts')
+    // }
 
-    const backGesture = Gesture.Pan().onEnd((event) => {
-            if(event.translationX > 25 )
-                {
-                    scheduleOnRN(redirectBack)
-                }
-        }
-    )
+    // const backGesture = Gesture.Pan().onEnd((event) => {
+    //         if(event.translationX > 25 )
+    //             {
+    //                 scheduleOnRN(redirectBack)
+    //             }
+    //     }
+    // )
 
   return (
-    <GestureDetector gesture={backGesture}>
+    //<GestureDetector gesture={backGesture}>
         <ThemedView safe={true} style={styles.container}>
-            <Pressable onPress={()=> router.back()} style={({pressed})=> [styles.backButton, {opacity: pressed? 0.5 : 1}]}>
+            {/* <Pressable onPress={()=> router.back()} style={({pressed})=> [styles.backButton, {opacity: pressed? 0.5 : 1}]}>
                 <Ionicons name='chevron-back' size={24} color={theme.iconColorFocused}/>
                 <ThemedText style={styles.backText}>Back</ThemedText>
-            </Pressable>
-            <Spacer height={120}/>
+            </Pressable> */}
+
+            <ThemedText title={true} style={styles.heading}>
+                Workout Details
+            </ThemedText>
+
+            <Spacer />
+            
             <ThemedCard style={styles.card}>
                 <ThemedText title={true} style={styles.title}>{workout.title}</ThemedText>
                 <Spacer height={10}/>
@@ -105,7 +111,7 @@ const WorkoutDetails = () => {
                 <ThemedText>Sets: {workout.sets}</ThemedText>
                 <ThemedText>Reps: {workout.reps}</ThemedText>
             </ThemedCard>
-            <ThemedButton onPress={() => router.push(`/workouts/${id}/edit`)}>
+            <ThemedButton onPress={() => router.push(`/workouts/${id}/edit`)} style={styles.edit}>
                 <Text style={{color: '#fff', textAlign: 'center'}}>
                     Edit Workout
                 </Text>
@@ -114,7 +120,7 @@ const WorkoutDetails = () => {
                 <Text style={{color: '#fff', textAlign: 'center'}}>{isLoading? "Deleting..." : "Delete Workout"}</Text>
             </ThemedButton>
         </ThemedView>
-    </GestureDetector>
+    //</GestureDetector>
   )
 }
 
@@ -133,8 +139,14 @@ const styles = StyleSheet.create({
     margin: 20
   },
   delete: {
-    marginTop: 40,
+    marginTop: 10,
     backgroundColor: Colors.warning,
+    width: 200,
+    alignSelf: "center",
+  },
+  edit: {
+    marginTop: 40,
+    backgroundColor: '#4c4c4a',
     width: 200,
     alignSelf: "center",
   },
@@ -147,5 +159,9 @@ const styles = StyleSheet.create({
   },
   backText: {
     fontSize: 17,
-  }
+  },
+  heading: {
+        fontSize: 30,
+        alignSelf: 'center',
+    }
 })
