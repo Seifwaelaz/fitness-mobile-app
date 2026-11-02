@@ -147,7 +147,7 @@ const profile = () => {
 
   return (
     <ThemedView style={styles.container}>
-      <Pressable onPress={handlePickImage}>
+      <Pressable style={{ marginTop: -20 }} onPress={handlePickImage}>
         {isLoading2 ? (
           <ActivityIndicator size={'large'} />
         ) : user.profilePicture ? (
@@ -162,7 +162,7 @@ const profile = () => {
         )}
       </Pressable>
 
-      <ThemedText title style={[styles.header, { fontSize: 35 }]}>
+      <ThemedText title style={[styles.header, { fontSize: 27 }]}>
         {user ? user.name : 'name'}
       </ThemedText>
       <Spacer height={2} />

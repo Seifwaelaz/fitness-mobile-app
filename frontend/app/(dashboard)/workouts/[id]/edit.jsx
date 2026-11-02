@@ -33,24 +33,24 @@ const EditWorkout = () => {
     if (isLoading) {
       return
     }
-    if (!title.trim() || !load.trim() || !reps.trim() || !sets.trim()) {
-      setError('Please fill in all fields.')
-      return
-    }
+    // if (!title.trim() || !load.trim() || !reps.trim() || !sets.trim()) {
+    //   setError('Please fill in all fields.')
+    //   return
+    // }
 
-    if (
-      !Number.isFinite(Number(load)) ||
-      !Number.isInteger(Number(reps)) ||
-      !Number.isInteger(Number(sets)) ||
-      Number(load) < 0 ||
-      Number(reps) <= 0 ||
-      Number(sets) <= 0
-    ) {
-      setError(
-        'Enter a valid load, and positive whole numbers for reps and sets.',
-      )
-      return
-    }
+    // if (
+    //   !Number.isFinite(Number(load)) ||
+    //   !Number.isInteger(Number(reps)) ||
+    //   !Number.isInteger(Number(sets)) ||
+    //   Number(load) < 0 ||
+    //   Number(reps) <= 0 ||
+    //   Number(sets) <= 0
+    // ) {
+    //   setError(
+    //     'Enter a valid load, and positive whole numbers for reps and sets.',
+    //   )
+    //   return
+    // }
 
     const updatedWorkout = await updateWorkout(id, title, load, reps, sets)
 
@@ -115,7 +115,7 @@ const EditWorkout = () => {
           style={{ textAlign: 'center' }}
         />
 
-        <Spacer />
+        <Spacer height={15}/>
 
         <ThemedText title style={{ alignSelf: 'center', marginBottom: 5 }}>
           Load
@@ -131,7 +131,7 @@ const EditWorkout = () => {
           style={{ textAlign: 'center' }}
         />
 
-        <Spacer />
+        <Spacer height={15}/>
 
         <ThemedText title style={{ alignSelf: 'center', marginBottom: 5 }}>
           Sets
@@ -147,7 +147,7 @@ const EditWorkout = () => {
           style={{ textAlign: 'center' }}
         />
 
-        <Spacer />
+        <Spacer height={15}/>
 
         <ThemedText title style={{ alignSelf: 'center', marginBottom: 5 }}>
           Reps
@@ -162,7 +162,7 @@ const EditWorkout = () => {
           }}
           style={{ textAlign: 'center' }}
         />
-        <Spacer />
+        <Spacer height={15} />
         <ThemedButton
           onPress={handleSubmit}
           style={styles.save}
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
   },
   error: {
     color: 'red',
-    textAlign: 'center',
+    alignSelf: 'center',
     marginTop: 20,
   },
 })

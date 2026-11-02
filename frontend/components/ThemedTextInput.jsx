@@ -17,6 +17,7 @@ const ThemedTextInput = ({ style, ...props }) => {
         style,
       ]}
       placeholderTextColor={theme.inputText}
+      maxLength={25}
       {...props}
     />
   )

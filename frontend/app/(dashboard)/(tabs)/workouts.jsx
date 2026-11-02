@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   list: {
     // marginTop: 30,
-    width: '450%',
+    width: '200%',
   },
   card: {
     // width: "90%",

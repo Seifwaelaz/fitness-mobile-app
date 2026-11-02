@@ -38,12 +38,15 @@ const create = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView style={styles.container}>
-        <Spacer />
         <ThemedText title={true} style={styles.heading}>
           Add a New Workout
         </ThemedText>
 
         <Spacer />
+
+        <ThemedText title style={{ alignSelf: 'center', marginBottom: 5 }}>
+          Title
+        </ThemedText>
 
         <ThemedTextInput
           placeholder="Title"
@@ -52,7 +55,11 @@ const create = () => {
           style={styles.input}
         />
 
-        <Spacer />
+        <Spacer height={15} />
+
+        <ThemedText title style={{ alignSelf: 'center', marginBottom: 5 }}>
+          Load
+        </ThemedText>
 
         <ThemedTextInput
           placeholder="Load"
@@ -61,7 +68,11 @@ const create = () => {
           style={styles.input}
         />
 
-        <Spacer />
+        <Spacer height={15} />
+
+        <ThemedText title style={{ alignSelf: 'center', marginBottom: 5 }}>
+          Sets
+        </ThemedText>
 
         <ThemedTextInput
           placeholder="Sets"
@@ -70,7 +81,11 @@ const create = () => {
           style={styles.input}
         />
 
-        <Spacer />
+        <Spacer height={15} />
+
+        <ThemedText title style={{ alignSelf: 'center', marginBottom: 5 }}>
+          Reps
+        </ThemedText>
 
         <ThemedTextInput
           placeholder="Reps"
@@ -79,7 +94,7 @@ const create = () => {
           style={styles.input}
         />
 
-        <Spacer />
+        <Spacer height={15} />
 
         <ThemedButton onPress={handleSubmit} disabled={isLoading}>
           <Text style={{ color: '#fff' }}>
@@ -87,7 +102,7 @@ const create = () => {
           </Text>
         </ThemedButton>
 
-        <Spacer />
+        <Spacer height={4} />
         {error && <Text style={styles.error}> {error}</Text>}
       </ThemedView>
     </TouchableWithoutFeedback>
@@ -114,12 +129,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 40,
   },
   error: {
-    color: Colors.warning,
-    padding: 10,
+    color: 'red',
+    //padding: 10,
+    alignSelf: 'center',
     // backgroundColor: '#f5c1c8',
-    borderColor: Colors.warning,
-    borderWidth: 1,
-    borderRadius: 6,
+    //borderColor: Colors.warning,
+    //borderWidth: 1,
+    //borderRadius: 6,
     marginHorizontal: 10,
   },
 })

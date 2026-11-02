@@ -47,6 +47,7 @@ const Register = () => {
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
+          maxLength={100}
           keyboardType="email-address"
         />
 
@@ -55,6 +56,7 @@ const Register = () => {
           placeholder="Password"
           value={password1}
           onChangeText={setPassword1}
+          maxLength={100}
           secureTextEntry
         />
 
@@ -63,6 +65,7 @@ const Register = () => {
           placeholder="Retype Password"
           value={password2}
           onChangeText={setPassword2}
+          maxLength={100}
           secureTextEntry
         />
 
@@ -101,12 +104,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   error: {
-    color: Colors.warning,
-    padding: 10,
+    color: 'red',
+    alignSelf: 'center',
+    //padding: 10,
     // backgroundColor: '#f5c1c8',
-    borderColor: Colors.warning,
-    borderWidth: 1,
-    borderRadius: 6,
+    //borderColor: Colors.warning,
+    //borderWidth: 1,
+    //borderRadius: 6,
     marginHorizontal: 10,
   },
 })
