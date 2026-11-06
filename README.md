@@ -17,29 +17,36 @@ A full-stack fitness tracking mobile application built with React Native and Exp
 
 ### Landing Page
 
-| Dark Mode                                     | Light Mode                                      |
-| --------------------------------------------- | ----------------------------------------------- |
-| ![Landing Dark](screenshots/landing-dark.png) | ![Landing Light](screenshots/landing-light.png) |
+<p align="center">
+  <img src="screenshots/landing-dark.png" width="300" />
+  <img src="screenshots/landing-light.png" width="300" />
+</p>
 
 ### Authentication
 
-![Login](screenshots/login.png)
+<p align="center">
+  <img src="screenshots/login.png" width="300" />
+</p>
 
 ### Workouts
 
-| Workout List                          | Workout Details                                     |
-| ------------------------------------- | --------------------------------------------------- |
-| ![Workouts](screenshots/workouts.png) | ![Workout Details](screenshots/workout-details.png) |
+<p align="center">
+  <img src="screenshots/workouts.png" width="300" />
+  <img src="screenshots/workout-details.png" width="300" />
+</p>
 
 ### Workout Management
 
-| Edit Workout                                  | Delete Confirmation                                         |
-| --------------------------------------------- | ----------------------------------------------------------- |
-| ![Edit Workout](screenshots/edit-workout.png) | ![Delete Confirmation](screenshots/delete-confirmation.png) |
+<p align="center">
+  <img src="screenshots/edit-workout.png" width="300" />
+  <img src="screenshots/delete-confirmation.png" width="300" />
+</p>
 
 ### Profile
 
-![Profile](screenshots/profile.png)
+<p align="center">
+  <img src="screenshots/profile.png" width="300" />
+</p>
 
 ## Tech Stack
 
