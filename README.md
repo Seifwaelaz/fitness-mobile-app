@@ -13,6 +13,34 @@ A full-stack fitness tracking mobile application built with React Native and Exp
 - **Light and dark themes** — Automatically adapts to the device's system appearance.
 - **Responsive mobile UI** — Reusable themed components, loading indicators, and error feedback.
 
+## Screenshots
+
+### Landing Page
+
+| Dark Mode                                     | Light Mode                                      |
+| --------------------------------------------- | ----------------------------------------------- |
+| ![Landing Dark](screenshots/landing-dark.png) | ![Landing Light](screenshots/landing-light.png) |
+
+### Authentication
+
+![Login](screenshots/login.png)
+
+### Workouts
+
+| Workout List                          | Workout Details                                     |
+| ------------------------------------- | --------------------------------------------------- |
+| ![Workouts](screenshots/workouts.png) | ![Workout Details](screenshots/workout-details.png) |
+
+### Workout Management
+
+| Edit Workout                                  | Delete Confirmation                                         |
+| --------------------------------------------- | ----------------------------------------------------------- |
+| ![Edit Workout](screenshots/edit-workout.png) | ![Delete Confirmation](screenshots/delete-confirmation.png) |
+
+### Profile
+
+![Profile](screenshots/profile.png)
+
 ## Tech Stack
 
 ### Mobile App
