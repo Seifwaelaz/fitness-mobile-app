@@ -38,11 +38,12 @@ const create = () => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <ThemedView style={styles.container}>
+        <Spacer height={10} />
         <ThemedText title={true} style={styles.heading}>
           Add a New Workout
         </ThemedText>
 
-        <Spacer />
+        <Spacer height={20} />
 
         <ThemedText title style={{ alignSelf: 'center', marginBottom: 5 }}>
           Title
@@ -123,10 +124,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   input: {
-    padding: 20,
+    padding: 10,
     borderRadius: 6,
     alignSelf: 'stretch',
     marginHorizontal: 40,
+    height: 50,
+    fontSize: 12
   },
   error: {
     color: 'red',

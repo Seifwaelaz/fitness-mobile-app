@@ -26,7 +26,7 @@ const Register = () => {
 
   const handleSubmit = async () => {
     Keyboard.dismiss()
-    await signup(email, password1, password2, name)
+    await signup(email.toLowerCase(), password1, password2, name)
   }
 
   return (

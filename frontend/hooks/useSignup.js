@@ -12,6 +12,7 @@ export const useSignup = () => {
   const signup = async (email, password1, password2, name) => {
     setError(null)
     setIsLoading(true)
+    
 
     if (password1 !== password2) {
       setIsLoading(false)

@@ -185,7 +185,9 @@ const profile = () => {
           </ThemedButton>
         </>
       ) : (
-        <Text style={{ color: theme.background }}>.</Text>
+        <ThemedButton onPress={handlePickImage} style={styles.changeButton}>
+          <Text style={styles.changeButtonText}>Add a Profile Picture</Text>
+        </ThemedButton>
       )}
 
       <ThemedButton disabled={isLoading} onPress={handleLogoutButton}>

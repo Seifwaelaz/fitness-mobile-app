@@ -1,15 +1,20 @@
 {
   "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "6a2bf2eb-e87f-4774-8fff-d657e7b4c021"
+      }
+    },
     "scheme": "fitnessapp",
     "experiments": {
       "typedRoutes": true
     },
     "name": "Fitness_MobileApp",
-    "slug": "Fitness_MobileApp",
+    "slug": "fitness_mobileapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true
     },
@@ -17,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.seifwael.fitness_mobileapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"

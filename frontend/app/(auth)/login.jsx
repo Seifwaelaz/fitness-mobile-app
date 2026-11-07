@@ -24,7 +24,7 @@ const Login = () => {
 
   const handleSubmit = async () => {
     Keyboard.dismiss()
-    await login(email, password)
+    await login(email.toLowerCase(), password)
   }
 
   return (

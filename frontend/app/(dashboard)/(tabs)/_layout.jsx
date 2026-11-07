@@ -5,10 +5,13 @@ import { Colors } from '../../../constants/Colors'
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import UserOnly from '../../../components/auth/UserOnly'
 import ThemedText from '../../../components/ThemedText'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const DashboardLayout = () => {
   const colorScheme = useColorScheme()
   const theme = Colors[colorScheme] ?? Colors.light
+
+  const insets = useSafeAreaInsets()
 
   return (
     <UserOnly>
@@ -19,6 +22,7 @@ const DashboardLayout = () => {
           tabBarInactiveTintColor: theme.iconColor,
           tabBarStyle: {
             height: 90,
+            paddingBottom: insets.bottom,
             paddingTop: 10,
             backgroundColor: theme.navBackground,
             borderColor: 'black',
