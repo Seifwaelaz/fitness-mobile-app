@@ -48,6 +48,19 @@ A full-stack fitness tracking mobile application built with React Native and Exp
   <img src="screenshots/profile.png" width="300" />
 </p>
 
+### Android Screenshots
+
+<p align="center">
+  <img src="screenshots/android-landing.png" width="250" />
+  <img src="screenshots/android-workouts.png" width="250" />
+  <img src="screenshots/android-profile.png" width="250" />
+</p>
+
+## Supported Platforms
+
+- Android — Built and tested on a physical Android device.
+- iOS — Tested on a physical iPhone using Expo Go.
+
 ## Tech Stack
 
 ### Mobile App
@@ -131,9 +144,13 @@ Open the application using Expo Go or an appropriate development build.
 
 ## Deployment
 
-The backend API is deployed on Vercel:
+The backend REST API is deployed on Vercel:
 
 https://fitness-mobile-app.vercel.app
+
+The Android application was built and tested as an APK using Expo EAS.
+
+The iOS application was tested using Expo Go.
 
 ## Future Improvements
 
